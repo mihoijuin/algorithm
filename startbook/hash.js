@@ -3,6 +3,6 @@
 //}
 
 const ShowHash = () => {
-	const form = document.forms.inputHash;
-	console.log(form);
+	const form = document.forms.hashForm;
+	console.log(form.inputHash.value);
 }
