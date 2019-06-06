@@ -1,5 +1,3 @@
-CreateHashTable();
-
 const ShowHash = () => {
 	const form = document.forms.hashForm;
 	const inputValue = form.inputHash.value;
@@ -37,3 +35,5 @@ const CreateHashTable = () => {
 
 	console.log(arrayH);
 }
+
+CreateHashTable();
