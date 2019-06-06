@@ -4,10 +4,17 @@
 
 const ShowHash = () => {
 	const form = document.forms.hashForm;
-	console.log(form.inputHash.value);
-	const div = document.createElement('div')
-	div.textContent = form.inputHash.value;
-
-	const element = document.getElementById('hashForm');
-	element.parentNode.insertBefore(div, element.nextSibling)
+	const inputValue = form.inputHash.value;
+	const resultId = 'searchResult';
+	
+	const resultElm = document.getElementById(resultId);
+	if(resultElm != null) {
+		resultElm.textContent = inputValue; 
+	} else {
+		const div = document.createElement('div')
+		div.setAttribute('id', resultId);
+		div.textContent = inputValue;
+		const element = document.getElementById('hashForm');
+	        element.parentNode.insertBefore(div, element.nextSibling);
+	}
 }
