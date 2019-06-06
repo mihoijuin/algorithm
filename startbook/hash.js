@@ -1,6 +1,4 @@
-// const Hash = (int num) => {
-	// hash計算
-//}
+CreateHashTable();
 
 const ShowHash = () => {
 	const form = document.forms.hashForm;
@@ -17,4 +15,25 @@ const ShowHash = () => {
 		const element = document.getElementById('hashForm');
 	        element.parentNode.insertBefore(div, element.nextSibling);
 	}
+}
+
+
+
+const CreateHashTable = () => {
+	const arrayD = [12, 25, 36, 20, 30, 8, 42];
+	let arrayH = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	const divident = arrayD.Length;
+	
+	for(let i=0; i<divident; i++) {
+		const value = arrayD[i]
+		let k = arrayD[i] % divident;
+
+		while(arrayH[k]==0) {
+			k = (k+1) % divident;
+		}
+
+		arrayH[k] = value;
+	}
+
+	console.log(arrayH);
 }
