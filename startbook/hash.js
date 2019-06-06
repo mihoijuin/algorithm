@@ -8,5 +8,6 @@ const ShowHash = () => {
 	const div = document.createElement('div')
 	div.textContent = form.inputHash.value;
 
-	element.parentNode.insertBefore(div, element.nextSibling);
+	const element = document.getElementById('hashForm');
+	element.parentNode.insertBefore(div, element.nextSibling)
 }
