@@ -19,17 +19,17 @@ const ShowHash = () => {
 
 const CreateHashTable = () => {
 	const arrayD = [12, 25, 36, 20, 30, 8, 42];
-	let arrayH = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-	const divident = arrayD.Length;
-	
-	for(let i=0; i<divident; i++) {
+	let arrayH = [0,0,0,0,0,0,0,0,0,0];
+	const divident = arrayD.length;
+
+	for(i=0; i<divident; i++) {
 		const value = arrayD[i]
 		let k = arrayD[i] % divident;
 
-		while(arrayH[k]==0) {
+		while(arrayH[k]!=0) {
 			k = (k+1) % divident;
 		}
-
+		
 		arrayH[k] = value;
 	}
 
