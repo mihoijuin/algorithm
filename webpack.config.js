@@ -4,8 +4,14 @@ module.exports = {
   mode: "development",
 
   // メインとなるJavaScriptファイル（エントリーポイント）
-  entry: "./startbook/src/index.js",
-
+  entry: {
+    main: ["./startbook/src/index.js", "./startbook/src/hash.js"]
+  },
+  output: {
+    path: "/Users/ijumiho/.ghq/github.com/mihoijuin/algorithm/startbook/dist",
+    filename: "main.js"
+  },
+  
   module: {
     rules: [
       {

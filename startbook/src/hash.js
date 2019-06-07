@@ -15,6 +15,7 @@ const showHash = () => {
 	}
 }
 
+window.showHash = showHash;
 
 export const calcHash = (num, divident) => {
 	return num % divident;
