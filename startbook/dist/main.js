@@ -90,34 +90,22 @@
 /*!*******************************!*\
   !*** ./startbook/src/hash.js ***!
   \*******************************/
-/*! exports provided: calcHash, createHashTable */
+/*! exports provided: calcHash, createHashTable, hashing, showResult */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"calcHash\", function() { return calcHash; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createHashTable\", function() { return createHashTable; });\nvar showHash = function showHash() {\n  var form = document.forms.hashForm;\n  var inputValue = form.inputHash.value;\n  var resultId = 'searchResult';\n  var resultElm = document.getElementById(resultId);\n\n  if (resultElm != null) {\n    resultElm.textContent = inputValue;\n  } else {\n    var div = document.createElement('div');\n    div.setAttribute('id', resultId);\n    div.textContent = inputValue;\n    var element = document.getElementById('hashForm');\n    element.parentNode.insertBefore(div, element.nextSibling);\n  }\n};\n\nwindow.showHash = showHash;\nvar calcHash = function calcHash(num, divident) {\n  return num % divident;\n};\nvar createHashTable = function createHashTable() {\n  var arrayD = [12, 25, 36, 20, 30, 8, 42];\n  var arrayH = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];\n  var divident = arrayH.length;\n\n  for (var i = 0; i < arrayD.length; i++) {\n    var value = arrayD[i];\n    var k = calcHash(value, divident);\n\n    while (arrayH[k] != 0) {\n      k = calcHash(k + 1, divident);\n    }\n\n    arrayH[k] = value;\n  }\n\n  console.log(arrayH);\n  return arrayH;\n};\n\n//# sourceURL=webpack:///./startbook/src/hash.js?");
-
-/***/ }),
-
-/***/ "./startbook/src/index.js":
-/*!********************************!*\
-  !*** ./startbook/src/index.js ***!
-  \********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _hash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hash */ \"./startbook/src/hash.js\");\n\n\nvar main = function main() {\n  Object(_hash__WEBPACK_IMPORTED_MODULE_0__[\"createHashTable\"])();\n};\n\nmain();\n\n//# sourceURL=webpack:///./startbook/src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"calcHash\", function() { return calcHash; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createHashTable\", function() { return createHashTable; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"hashing\", function() { return hashing; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showResult\", function() { return showResult; });\nvar createResultElement = function createResultElement(content) {\n  var resultId = 'searchResult';\n  var resultElm = document.getElementById(resultId);\n\n  if (resultElm != null) {\n    resultElm.textContent = content;\n  } else {\n    var div = document.createElement('div');\n    div.setAttribute('id', resultId);\n    div.textContent = content;\n    var element = document.getElementById('hashForm');\n    if (element != null) element.parentNode.insertBefore(div, element.nextSibling);\n  }\n};\n\nvar calcHash = function calcHash(num, divident) {\n  return num % divident;\n};\nvar createHashTable = function createHashTable() {\n  var arrayD = [12, 25, 36, 20, 30, 8, 42];\n  var arrayH = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];\n  var divident = arrayH.length;\n\n  for (var i = 0; i < arrayD.length; i++) {\n    var value = arrayD[i];\n    var k = calcHash(value, divident);\n\n    while (arrayH[k] != 0) {\n      k = calcHash(k + 1, divident);\n    }\n\n    arrayH[k] = value;\n  }\n\n  console.log(arrayH);\n  return arrayH;\n};\nvar hashing = function hashing(inputNum, arrayH) {\n  var divident = arrayH.length;\n  var k = calcHash(inputNum, divident);\n\n  while (arrayH[k] != inputNum) {\n    k = calcHash(k + 1, divident);\n    if (arrayH[k] == 0) return null;\n  }\n\n  return k;\n};\nvar showResult = function showResult() {\n  var inputValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;\n  var form = document.forms.hashForm;\n  if (form != null) inputValue = form.inputHash.value;\n\n  if (isNaN(inputValue)) {\n    createResultElement(\"数値を入力してね\");\n    return null;\n  }\n\n  var inputNum = parseInt(inputValue, 10);\n  var arrayH = createHashTable();\n  var result = hashing(inputNum, arrayH);\n\n  if (result == null) {\n    createResultElement(\"入力した数値はデータ内に存在しないよ\");\n  } else {\n    createResultElement(result + \"番目にデータがあるよ\");\n  }\n\n  return result;\n};\nwindow.showResult = showResult;\n\n//# sourceURL=webpack:///./startbook/src/hash.js?");
 
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************!*\
-  !*** multi ./startbook/src/index.js ./startbook/src/hash.js ***!
-  \**************************************************************/
+/*!*************************************!*\
+  !*** multi ./startbook/src/hash.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./startbook/src/index.js */\"./startbook/src/index.js\");\nmodule.exports = __webpack_require__(/*! ./startbook/src/hash.js */\"./startbook/src/hash.js\");\n\n\n//# sourceURL=webpack:///multi_./startbook/src/index.js_./startbook/src/hash.js?");
+eval("module.exports = __webpack_require__(/*! ./startbook/src/hash.js */\"./startbook/src/hash.js\");\n\n\n//# sourceURL=webpack:///multi_./startbook/src/hash.js?");
 
 /***/ })
 

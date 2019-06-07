@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
   // development に設定するとソースマップ有効でJSファイルが出力される
@@ -5,10 +7,10 @@ module.exports = {
 
   // メインとなるJavaScriptファイル（エントリーポイント）
   entry: {
-    main: ["./startbook/src/index.js", "./startbook/src/hash.js"]
+    main: ["./startbook/src/hash.js"]
   },
   output: {
-    path: "/Users/ijumiho/.ghq/github.com/mihoijuin/algorithm/startbook/dist",
+    path: path.resolve(__dirname, "startbook/dist"),
     filename: "main.js"
   },
   

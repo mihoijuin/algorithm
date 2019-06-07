@@ -1,21 +1,18 @@
-const showHash = () => {
-	const form = document.forms.hashForm;
-	const inputValue = form.inputHash.value;
+
+
+const createResultElement = (content) => {
 	const resultId = 'searchResult';
-	
 	const resultElm = document.getElementById(resultId);
 	if(resultElm != null) {
-		resultElm.textContent = inputValue; 
-	} else {
-		const div = document.createElement('div')
-		div.setAttribute('id', resultId);
-		div.textContent = inputValue;
-		const element = document.getElementById('hashForm');
-	        element.parentNode.insertBefore(div, element.nextSibling);
-	}
+                resultElm.textContent = content;
+        } else {
+                const div = document.createElement('div')
+                div.setAttribute('id', resultId);
+                div.textContent = content;
+                const element = document.getElementById('hashForm');
+                if(element != null) element.parentNode.insertBefore(div, element.nextSibling);
+        }
 }
-
-window.showHash = showHash;
 
 export const calcHash = (num, divident) => {
 	return num % divident;
@@ -40,3 +37,37 @@ export const createHashTable = () => {
 	return arrayH;
 }
 
+export const hashing = (inputNum, arrayH) => {
+	const divident = arrayH.length;
+	let k = calcHash(inputNum, divident);
+	
+	while(arrayH[k] != inputNum){
+		k = calcHash(k+1, divident);	
+		if(arrayH[k] == 0) return null;
+	}
+	
+	return k;
+} 
+
+export const showResult = (inputValue=null) => {
+        const form = document.forms.hashForm;
+        if(form != null) inputValue = form.inputHash.value;
+        if(isNaN(inputValue)) {
+                createResultElement("数値を入力してね");
+                return null;
+        }
+	
+	let inputNum = parseInt(inputValue, 10)
+
+        const arrayH = createHashTable();
+	const result = hashing(inputNum, arrayH);
+	if(result == null) {
+		createResultElement("入力した数値はデータ内に存在しないよ");
+	} else {
+		createResultElement(result + "番目にデータがあるよ");
+	}
+	return result;
+}
+
+
+window.showResult = showResult;
