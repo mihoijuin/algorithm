@@ -16,18 +16,21 @@ const ShowHash = () => {
 }
 
 
+const CalcHash = (num, divident) => {
+	return  num % divident;
+}
 
 const CreateHashTable = () => {
 	const arrayD = [12, 25, 36, 20, 30, 8, 42];
 	let arrayH = [0,0,0,0,0,0,0,0,0,0];
-	const divident = arrayD.length;
+	const divident = arrayH.length;
 
 	for(i=0; i<divident; i++) {
 		const value = arrayD[i]
-		let k = arrayD[i] % divident;
+		let k = CalcHash(value, divident);
 
 		while(arrayH[k]!=0) {
-			k = (k+1) % divident;
+			k = CalcHash(k+1, divident);
 		}
 		
 		arrayH[k] = value;
@@ -35,5 +38,6 @@ const CreateHashTable = () => {
 
 	console.log(arrayH);
 }
+
 
 CreateHashTable();
