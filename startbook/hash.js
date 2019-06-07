@@ -1,4 +1,4 @@
-const ShowHash = () => {
+const showHash = () => {
 	const form = document.forms.hashForm;
 	const inputValue = form.inputHash.value;
 	const resultId = 'searchResult';
@@ -16,26 +16,26 @@ const ShowHash = () => {
 }
 
 
-export const CalcHash = (num, divident) => {
+export const calcHash = (num, divident) => {
 	return num % divident;
 }
 
-const CreateHashTable = () => {
+export const createHashTable = () => {
 	const arrayD = [12, 25, 36, 20, 30, 8, 42];
 	let arrayH = [0,0,0,0,0,0,0,0,0,0,0];
 	const divident = arrayH.length;
 
-	for(let i=0; i<divident; i++) {
+	for(let i=0; i<arrayD.length; i++) {
 		const value = arrayD[i]
-		let k = arrayD[i] % divident;
-
+		let k = calcHash(value, divident);
 		while(arrayH[k]!=0) {
-			k = (k+1) % divident;
+			k = calcHash(k+1, divident);
 		}
 		
 		arrayH[k] = value;
 	}
 
 	console.log(arrayH);
+	return arrayH;
 }
 
