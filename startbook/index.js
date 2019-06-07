@@ -1,4 +1,4 @@
-import { createHashTable } from 'hash';
+import { createHashTable } from './hash';
 
 
 const main = () => {
